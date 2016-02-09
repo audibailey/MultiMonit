@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Multi-Monit: Settings</title>
+
+    <script src="/static/js/Index.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="flex-grid no-responsive-future" style="height: 100%;">
+            <div class="row" style="height: 100%">
+
+                <div class="cell auto-size padding20 bg-white" id="cell-content">
+                    <h1 class="text-light">Settings<span class="mif-wrench place-right"></span></h1>
+                    <hr class="thin bg-grayLighter">
+
+                    <div class="cell flex-just-center" style="border:thin black">
+                        <form method="GET" action="confirmed">
+                            <h4 class="text-light">Monit HTTP XML URL</h4>
+                            <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
+                            <br>
+                            <div class="input_fields_wrap">
+                                <div class="input-control modern text" style="width: 100%">
+                                        <input type="text" name="monitxml1">
+                                        <span class="label">Monit HTTP XML URL:</span>
+                                        <span class="informer">Example: http://admin:monit@example.com:2812/_status?format=xml</span>
+                                        <span class="placeholder">Monit XML URL</span>
+                                </div>
+                            </div>
+                            <button type="button" class="button link add_field_button">Add More URL's</button>
+                            <br>
+                            <br>
+                            <h4 class="text-light">Refresh Rate</h4>
+                            <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
+                            <br>
+                            <div class="input-control text">
+                                <input type="text" placeholder="Seconds, eg. 1, 5, 24, 300" name="refresh">
+                            </div>
+
+                            <div class="form-actions">
+                                <button type="submit" class="button primary">Save Settings</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

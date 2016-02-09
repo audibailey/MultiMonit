@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <title>Multi Monit: Setup</title>
+
+    <style>
+        .login-form {
+            width: 25rem;
+            height: auto;
+            position: fixed;
+            top: 20%;
+            margin-top: -9.375rem;
+            left: 50%;
+            margin-left: -12.5rem;
+            background-color: #ffffff;
+            opacity: 0;
+            -webkit-transform: scale(.8);
+            transform: scale(.8);
+        }
+    </style>
+
+    <script>
+        $(function(){
+            var form = $(".login-form");
+
+            form.css({
+                opacity: 1,
+                "-webkit-transform": "scale(1)",
+                "transform": "scale(1)",
+                "-webkit-transition": ".5s",
+                "transition": ".5s"
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+
+    <div class="login-form padding20 block-shadow" style="opacity: 1; transform: scale(1); transition: 0.5s;">
+        <form method="GET" action="Home/dash">
+            <h1 class="text-light">Multi-Monit: Setup</h1>
+            <hr class="thin">
+            <br>
+                <div  class="input_fields_wrap">
+                    <div class="input-control modern text" style="width: 100%">
+                            <input type="text" name="monitxml1">
+                            <span class="label">Monit HTTP XML URL:</span>
+                            <span class="informer">Example: http://admin:monit@example.com:2812/_status?format=xml</span>
+                            <span class="placeholder">Monit XML URL</span>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="form-actions">
+                    <button type="submit" class="button primary">Save</button>
+                    <button type="button" class="button link add_field_button">Add More URL's</button>
+                    <br>
+                    <span>You can add more in the settings later.</span>
+                </div>
+        </form>
+    </div>
+
+    <script src="/static/js/Index.js"></script>
+{% endblock %}
+
+
+
+
