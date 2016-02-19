@@ -16,9 +16,15 @@ MarkupSafe >= 0.23
 #Instructions for Debian/Ubuntu:
 sudo apt-get update
 
-sudo apt-get python2
+sudo apt-get python2, git
 
 sudo pip install jinja2 cherrypy markupsafe
+
+cd /opt
+
+git clone git://github.com/desgyz/MultiMonit.git MultiMonit
+
+cd MultiMonit
 
 Run the run.py and goto localhost:3005 for the setup to begin.
 
