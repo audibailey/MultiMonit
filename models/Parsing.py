@@ -5,8 +5,8 @@ import urllib
 
 def system():
 
-    url = Config.readConfig()
-    print url
+    config = Config.readconfig()
+    url = config["URLS"]
 
     parsed = []
 

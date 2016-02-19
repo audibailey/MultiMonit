@@ -21,9 +21,25 @@ def error_page_404(status, message, traceback, version):
 def handle_error():
     cherrypy.response.status = 500
     cherrypy.response.body = [
-        "<html><body>Sorry, an error occured</body></html>".encode()
-    ]
+        """
+            <html>
 
+                <body>
+
+                    <h1> Error 500. Sorry, an error occurred. </h1>
+                    <p> This is an internal error in relation to either the URL you used or a bug in the code. </p>
+                    <p> Try changing the URL in the settings to fix the error.</p>
+                    <a href="settings">Settings</a>
+                    </br>
+                    <p> For more information check the log.txt in the install directory</p>
+                    <p> Please post an issue at <a href="https://github.com/desgyz/MultiMonit">GitHub</a> if the error persists</p>
+
+                </body>
+
+            </html>
+
+        """.encode()
+    ]
 
 class RootController:
     @cherrypy.expose
@@ -72,8 +88,7 @@ def start_server():
         # 'tools.db.on': True
     }
 
-    if SiteConfig.is_prod:
-        server_config['request.error_response'] = handle_error
+    server_config['request.error_response'] = handle_error
 
     cherrypy.config.update(server_config)
 
@@ -103,8 +118,6 @@ def start_server():
 
     # this return value is used by the WSGI server in prod
     return cherrypy.tree
-
-
 
 try:
     application = start_server()

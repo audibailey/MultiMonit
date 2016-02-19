@@ -21,12 +21,14 @@
                             <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
                             <br>
                             <div class="input_fields_wrap">
+                                {% for v in urls %}
                                 <div class="input-control modern text" style="width: 100%">
-                                        <input type="text" name="monitxml1">
+                                        <input type="text" name="monitxml{{ k }}" value="{{ v }}">
                                         <span class="label">Monit HTTP XML URL:</span>
-                                        <span class="informer">Example: http://admin:monit@example.com:2812/_status?format=xml</span>
-                                        <span class="placeholder">Monit XML URL</span>
+                                        <span class="informer">Example: http://user:pass@link.com:2812/_status?format=xml</span>
+                                        <button class="button remove_field"><span class="mif-cross"></span></button>
                                 </div>
+                                {% endfor %}
                             </div>
                             <button type="button" class="button link add_field_button">Add More URL's</button>
                             <br>
@@ -35,7 +37,7 @@
                             <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
                             <br>
                             <div class="input-control text">
-                                <input type="text" placeholder="Seconds, eg. 1, 5, 24, 300" name="refresh">
+                                <input type="text" name="refresh" value="{{ refresh }}">
                             </div>
 
                             <div class="form-actions">

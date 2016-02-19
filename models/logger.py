@@ -23,10 +23,9 @@ class logs():
     def log(m):
         refresh = 20
 
-        for i in Config.readConfigRefresh():
-            refresh = int(i)
+        config = Config.readconfig()
+        refresh = config["refresh"]
 
-        refresh = int(refresh)*5
         name = ""
         monit = ET.parse(urllib.urlopen(m)) or ET.parse(m)
         root = monit.getroot()
@@ -44,7 +43,8 @@ class logs():
 
     @staticmethod
     def logall():
-        url = Config.readConfig()
+        config = Config.readconfig()
+        url = config["URLS"]
 
         if os.path.exists("logs"):
             pass

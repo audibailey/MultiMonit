@@ -1,73 +1,20 @@
-import ConfigParser
-import os
+import yaml
 
-config = ConfigParser.RawConfigParser()
-count = 0
+fname = "config.yml"
 
-def readConfig():
-    URLS = []
+def mkconfig(urls):
+    with open(fname, "w") as f:
+        yaml.dump({"URLS": urls, "refresh": 20}, f)
+
+def readconfig():
     try:
-        results = config.read("config.ini")
+        with open(fname) as f:
+            data = yaml.load(f)
+
+        return data
     except:
-        print "Error Parsing File"
-    else:
-        if not results:
-            pass
-        else:
-            for k, v in config.items("URLS"):
-                URLS.append(v)
-    return URLS
-
-
-def readConfigRefresh():
-    refresh = []
-    try:
-        results = config.read("config.ini")
-    except:
-        print "Error Parsing File"
-    else:
-        if not results:
-            pass
-        else:
-            for k, v in config.items("Refresh"):
-                refresh.append(v)
-    return refresh
-
-
-def makeConfig(Parameters):
-    config.add_section('URLS')
-    config.add_section('Refresh')
-    config.set('Refresh', str(0), '20')
-    for i in Parameters.values():
-        global count
-        config.set('URLS', str(count), i)
-        count = count + 1
-
-    with open('config.ini', 'wb') as configfile:
-        config.write(configfile)
-
-
-def mkfile(parameters):
-    if os.path.exists("config.ini"):
-        return None
-    else:
-        makeConfig(parameters)
-
-def updateConfig(url, refresh):
-
-    oldrefresh = readConfigRefresh()
-    oldurl = readConfig()
-
-    try:
-        if refresh != oldrefresh:
-            config.set('Refresh', str(0), refresh)
-
-        if url != oldurl:
-            for i in url.values():
-                global count
-                config.set('URLS', str(count), i)
-                count = count + 1
-
         return 0
-    except:
-        return 1
+
+def updateconfig(urls, refresh):
+    with open(fname, "w") as f:
+        yaml.dump({"URLS": urls, "refresh": refresh}, f)
