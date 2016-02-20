@@ -44,28 +44,29 @@ class logs():
     @staticmethod
     def logall():
         config = Config.readconfig()
-        url = config["URLS"]
+        if config != 0:
+            url = config["URLS"]
 
-        if os.path.exists("logs"):
-            pass
-        else:
-            os.mkdir("logs")
+            if os.path.exists("logs"):
+                pass
+            else:
+                os.mkdir("logs")
 
-        thread_list = []
+            thread_list = []
 
-        for m in url:
-            # Instantiates the thread
-            # (i) does not make a sequence, so (i,)
-            t = threading.Thread(target=logs.log, args=(m,))
-            # Sticks the thread in a list so that it remains accessible
-            thread_list.append(t)
+            for m in url:
+                # Instantiates the thread
+                # (i) does not make a sequence, so (i,)
+                t = threading.Thread(target=logs.log, args=(m,))
+                # Sticks the thread in a list so that it remains accessible
+                thread_list.append(t)
 
-        # Starts threads
-        for thread in thread_list:
-            thread.start()
+            # Starts threads
+            for thread in thread_list:
+                thread.start()
 
-        # This blocks the calling thread until the thread whose join() method is called is terminated.
-        # From http://docs.python.org/2/library/threading.html#thread-objects
-        for thread in thread_list:
-            thread.join()
+            # This blocks the calling thread until the thread whose join() method is called is terminated.
+            # From http://docs.python.org/2/library/threading.html#thread-objects
+            for thread in thread_list:
+                thread.join()
 

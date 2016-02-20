@@ -74,13 +74,13 @@ def start_server():
 
         # this indicates that we want file-based sessions (not stored in RAM, which is the default)
         # the advantage of this is that you can stop/start CherryPy and your sessions will continue
-        'tools.sessions.on': True,
+        'tools.sessions.on': False,
         'tools.sessions.storage_type': "file",
         'tools.sessions.storage_path': session_dir,
         'tools.sessions.timeout': 180,
 
         # this is a custom tool for handling authorization (see auth.py)
-        'tools.auth.on': True,
+        'tools.auth.on': False,
         'tools.auth.priority': 52,
         'tools.sessions.locking': 'early'
 
@@ -114,13 +114,16 @@ def start_server():
     if SiteConfig.is_prod:
         cherrypy.server.unsubscribe()
 
+    if hasattr(cherrypy.engine, 'signal_handler'):
+        cherrypy.engine.signal_handler.subscribe()
+
     cherrypy.engine.start()
 
+    logs.logall()
     # this return value is used by the WSGI server in prod
     return cherrypy.tree
 
 try:
     application = start_server()
-    logs.logall()
 except Exception as ex:
     Logger.error('Error during run', ex)
