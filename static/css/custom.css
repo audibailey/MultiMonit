@@ -14,54 +14,5 @@
 .dot.failure
   { background-color: red; }
 
-.server .segment
-  { margin-bottom: 1em;
-    padding: 0.25em 0.5em 0.25em 0.5em;
-    float: none;
-    clear: both;
-    border-bottom: 1px solid #E5E5E5; }
-
-.server .segment h3
-  { color: #999;
-    font-size: 80%;
-    font-weight: normal;
-    text-transform: uppercase;
-    margin: 0;
-    padding: 0;
-    float: left;
-    width: 10em; }
-
-.server .segment ul
-  { font-size: 90%;
-    float: left;
-    margin: -0.3em 0 0 0;
-    padding: 0; }
-
-.server .segment ul li
-  { list-style-type: none;
-    padding: 0.25em;
-    border-bottom: 1px solid #ccc; }
-
-.server .segment ul li:last-child
-  { border-bottom: none; }
-
-.server .segment ul li strong
-  { width: 20em;
-    display: block;
-    float: left; }
-
-.server .segment strong .label
-  { color: #fff;
-    background-color: #ccc;
-    font-size: 75%;
-    text-transform: uppercase;
-    font-weight: normal;
-    padding: 0.25em 0.5em 0.15em 0.5em;
-    -moz-border-radius:    0.5em;
-  	border-radius:         0.5em; }
-
-.server .segment strong .label.warning
-  { background-color: orange; }
-
 .clear
   { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0 }
