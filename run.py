@@ -66,6 +66,12 @@ def start_server():
     # this is where I initialize a custom tool for connecting to the database, once for each
     # request. Edit models/dbtool.py and uncomment the tools.db lines below to use this.
     # cherrypy.tools.db = DbTool()
+
+    ##################################################################
+    #                                                                #
+    #                       CONFIG SECTION                           #
+    #                                                                #
+    ##################################################################
     server_config = {
         # This tells CherryPy what host and port to run the site on (e.g. localhost:3005/)
         # Feel free to set this to whatever you'd like.
@@ -95,6 +101,11 @@ def start_server():
         'tools.auth_basic.realm': 'Default username: admin, Default password: password',
         'tools.auth_basic.checkpassword': checkpassword,
     }
+    ##################################################################
+    #                                                                #
+    #                    END CONFIG SECTION                          #
+    #                                                                #
+    ##################################################################
 
     # error handling
     server_config['request.error_response'] = handle_error

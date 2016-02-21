@@ -1,7 +1,7 @@
 import xml.etree.cElementTree as ET
 from models import Config
 from site_config import SiteConfig
-import urllib, os, time, logging, threading
+import urllib, os, time, logging, threading, ssl
 
 
 class logs():
@@ -29,7 +29,8 @@ class logs():
         refresh = config["refresh"]
 
         name = ""
-        monit = ET.parse(urllib.urlopen(m)) or ET.parse(m)
+        gcontext = ssl.SSLContext(ssl.CERT_OPTIONAL)
+        monit = ET.parse(urllib.urlopen(m, context=gcontext)) or ET.parse(m)
         root = monit.getroot()
 
         for i in root.findall("server/localhostname"):

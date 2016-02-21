@@ -1,6 +1,6 @@
 import xml.etree.cElementTree as ET
 from models import Config
-import urllib
+import urllib, ssl
 
 
 def system():
@@ -19,7 +19,8 @@ def system():
         fs = []
 
         # parse the xml whether its a local xml file or remote
-        monit = ET.parse(urllib.urlopen(m)) or ET.parse(m)
+        gcontext = ssl.SSLContext(ssl.CERT_OPTIONAL)
+        monit = ET.parse(urllib.urlopen(m, context=gcontext)) or ET.parse(m)
         root = monit.getroot()
 
         # find and save daemon xml data
