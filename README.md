@@ -1,17 +1,16 @@
-#MultiMonit
+# MultiMonit
 
 A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
-Version: 2.13
+Version: 2.18
 
-#Important
+# Important
 
 * There is one error which makes it impossible to kill MultiMonit using Ctrl + C. Please use Ctrl + \ to kill MultiMonit, kill -9 {PID} still works as usual.
-* If there is in error or you cant figure something out, use the github Issues tab please.
+* If there is in error or you cant figure something out, use the GitHub Issues tab please.
 
-#To Do
+# To Do
 
-* Utilise simply HTTP Auth headers and make a config setup for that
-* Fix the Ctrl+C error
+* Fix the Ctrl+C error (For now use Kill or Ctrl + \)
 * Add new proposed features
 
 # Requirements:
@@ -24,14 +23,14 @@ Version: 2.13
 
 #Instructions for Debian/Ubuntu:
 
-* sudo apt-get update
-* sudo apt-get python2 git
-* sudo pip install jinja2 cherrypy markupsafe PyYAML
-* cd /opt
-* git clone git://github.com/desgyz/MultiMonit.git MultiMonit
-* cd MultiMonit
-* Run the run.py and goto localhost:3005 for the setup to begin.
-* (Some people may require python dev to use this)
+1. sudo apt-get update
+2. sudo apt-get python2 git
+3. sudo pip install jinja2 cherrypy markupsafe PyYAML
+4. cd /opt
+5. git clone git://github.com/desgyz/MultiMonit.git MultiMonit
+6. cd MultiMonit
+7. Run the run.py and goto localhost:3005 for the setup to begin.
+* Note: Some people may require python dev to use this
 
 #Credits
 

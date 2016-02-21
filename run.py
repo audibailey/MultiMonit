@@ -35,34 +35,37 @@ def handle_error():
                     <p> Please post an issue at <a href="https://github.com/desgyz/MultiMonit">GitHub</a> if the error persists</p>
 
                 </body>
-
             </html>
-
         """.encode()
     ]
 
+# Set the controller
 class RootController:
     @cherrypy.expose
     def index(self, *args, **kwargs):
         c = HomeController()
         return c.index()
 
-
+# function to start server
 def start_server():
+
+    # organise base path
     cherrypy.site = {
         'base_path': os.getcwd()
     }
 
     # make sure the directory for storing session files exists
     session_dir = cherrypy.site['base_path'] + "/sessions"
-
     if not os.path.exists(session_dir):
         os.makedirs(session_dir)
+
+    # set default password for basic auth
+    userpassdict = {'admin' : 'password'}
+    checkpassword = cherrypy.lib.auth_basic.checkpassword_dict(userpassdict)
 
     # this is where I initialize a custom tool for connecting to the database, once for each
     # request. Edit models/dbtool.py and uncomment the tools.db lines below to use this.
     # cherrypy.tools.db = DbTool()
-
     server_config = {
         # This tells CherryPy what host and port to run the site on (e.g. localhost:3005/)
         # Feel free to set this to whatever you'd like.
@@ -74,7 +77,7 @@ def start_server():
 
         # this indicates that we want file-based sessions (not stored in RAM, which is the default)
         # the advantage of this is that you can stop/start CherryPy and your sessions will continue
-        'tools.sessions.on': False,
+        'tools.sessions.on': True,
         'tools.sessions.storage_type': "file",
         'tools.sessions.storage_path': session_dir,
         'tools.sessions.timeout': 180,
@@ -82,14 +85,21 @@ def start_server():
         # this is a custom tool for handling authorization (see auth.py)
         'tools.auth.on': False,
         'tools.auth.priority': 52,
-        'tools.sessions.locking': 'early'
+        'tools.sessions.locking': 'early',
 
         # uncomment the below line to use the tool written to connect to the database
         # 'tools.db.on': True
+
+        # basic auth settings
+        'tools.auth_basic.on': True,
+        'tools.auth_basic.realm': 'Default username: admin, Default password: password',
+        'tools.auth_basic.checkpassword': checkpassword,
     }
 
+    # error handling
     server_config['request.error_response'] = handle_error
 
+    # update server config
     cherrypy.config.update(server_config)
 
     # this will let us access localhost:3005/Home or localhost:3005/Home/Index
@@ -114,15 +124,23 @@ def start_server():
     if SiteConfig.is_prod:
         cherrypy.server.unsubscribe()
 
+    # failed attempt of Ctrl + C signal handler, will be deprecated
     if hasattr(cherrypy.engine, 'signal_handler'):
         cherrypy.engine.signal_handler.subscribe()
 
+    # start the web server
     cherrypy.engine.start()
 
+    # start logging
     logs.logall()
+
+    # a little hint to kill the program
+    print "Please use Ctrl + \\ to kill the program or use PID kill"
+
     # this return value is used by the WSGI server in prod
     return cherrypy.tree
 
+# start the application, includes a basic error handle
 try:
     application = start_server()
 except Exception as ex:

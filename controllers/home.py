@@ -25,10 +25,13 @@ class HomeController(BaseController):
         # Attempts to read the config.
         if config == 0:
             # Else it uses the Arguements to create a config.
+            # organises make config data
             data = {str(key):str(value) for key,value in params.items()}
             url = []
             for i, v in data.items():
                 url.append(v)
+
+            # makes config
             Config.mkconfig(url)
         else:
             # If True it saves the data to a variable
@@ -46,9 +49,11 @@ class HomeController(BaseController):
     # CherryPy load the Settings Page
     @cherrypy.expose
     def settings(self):
+        # get config data
         config = Config.readconfig()
         URLS = config["URLS"]
         refresh = config["refresh"]
+
         # Return the template
         return self.render_template('home/settings.html', template_vars={'refresh': refresh, 'urls': URLS})
 
@@ -56,13 +61,15 @@ class HomeController(BaseController):
     @cherrypy.expose
     def confirmed(self, **params):
         url = []
+        # setup update config data
         for k, v in params.items():
             if k != "refresh":
                 url = v
             else:
                 refresh = v
 
+        # update config
         Config.updateconfig(url, refresh)
-        # Return the template
-        # return self.render_template('home/confirmed.html')
+
+        # redirect to dashboard
         raise cherrypy.HTTPRedirect("dash")

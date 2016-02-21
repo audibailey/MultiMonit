@@ -6,6 +6,7 @@ import urllib, os, time, logging, threading
 
 class logs():
 
+    # fancy logger setup script
     @staticmethod
     def setup_logger(logger_name, log_file, level=logging.INFO):
         l = logging.getLogger(logger_name)
@@ -19,6 +20,7 @@ class logs():
         l.addHandler(fileHandler)
         l.addHandler(streamHandler)
 
+    # log xml data to appropriate text file
     @staticmethod
     def log(m):
         refresh = 20
@@ -41,10 +43,11 @@ class logs():
             logger.info(data)
             time.sleep(refresh)
 
+    # initiate logging data as a multi threaded task
     @staticmethod
     def logall():
         config = Config.readconfig()
-        if config != 0:
+        while config != 0:
             url = config["URLS"]
 
             if os.path.exists("logs"):
