@@ -44,7 +44,7 @@ class logs():
         while True:
             data = ET.tostring(root)
             logger.info(data)
-            time.sleep(refresh)
+            time.sleep(float(refresh))
 
     # initiate logging data as a multi threaded task
     @staticmethod

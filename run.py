@@ -28,7 +28,7 @@ def handle_error():
 
                     <h1> Error 500. Sorry, an error occurred. </h1>
                     <p> This is an internal error in relation to either the URL you used or a bug in the code. </p>
-                    <p> Try changing the URL in the settings to fix the error.</p>
+                    <p> Try reloading the page or changing the URL in the settings to fix the error.</p>
                     <a href="settings">Settings</a>
                     </br>
                     <p> For more information check the log.txt in the install directory</p>

@@ -21,7 +21,7 @@
                 <div class="cell auto-size padding20 bg-white" id="cell-content">
                     <h1 class="text-light">Dashboard <span class="mif-meter place-right"></span></h1>
                     <hr class="thin bg-grayLighter">
-                    <span>It is compulsory to restart MultiMonit after doing the websetup! (For logging and some other features to work)</span>
+                    <p>It is compulsory to restart MultiMonit after doing the websetup! (For logging and some other features to work)</p>
                     <br>
                     <div class="accordion" id="accordion">
                         {% for i in data %}
@@ -34,10 +34,10 @@
                                     </strong>
 
                                     <small style="float: right">
-                                        <span class="info"><span class="label">load:   </span>{{ i.sys.load.avg05 }}</span>
-                                        <span class="info"><span class="label">cpu:    </span>{{ i.sys.cpu.user }}</span>
-                                        <span class="info"><span class="label">memory: </span>{{ i.sys.memory.percent }}</span>
-                                        <span class="info"><span class="label">swap:   </span>{% if i.sys.swap %}{{ i.sys.swap.percent }}{% else %} N/A {% endif %}</span>
+                                        <span class="info"><span class="label">load:   </span>{{ i.sys.load.avg05 }} | </span>
+                                        <span class="info"><span class="label">cpu:    </span>{{ i.sys.cpu.user }}% |</span>
+                                        <span class="info"><span class="label">memory: </span>{{ i.sys.memory.percent }}% | </span>
+                                        <span class="info"><span class="label">swap:   </span>{% if i.sys.swap %}{{ i.sys.swap.percent }}% | {% else %} N/A | {% endif %}</span>
                                         <span class="info"><span class="label">uptime: </span>{{ i.sys.server.uptime}}</span>
                                     </small>
                                 </div>
@@ -74,9 +74,13 @@
                                                 </strong>
 
                                                 <small>
-                                                    <span class="info"><span class="label">cpu:    </span>{% if s.cpu.percent %}{{ s.cpu.percent }}{% else %} N/A {% endif %}</span>
-                                                    <span class="info"><span class="label">memory: </span>{% if s.mem.percent %}{{ s.mem.percent }}{% else %} N/A {% endif %}</span>
+                                                    </br>
+                                                    <span class="info"><span class="label">cpu:    </span>{% if s.cpu.percent %}{{ s.cpu.percent }}% {% else %} N/A {% endif %}</span>
+                                                    </br>
+                                                    <span class="info"><span class="label">memory: </span>{% if s.mem.percent %}{{ s.mem.percent }}% {% else %} N/A {% endif %}</span>
+                                                    </br>
                                                     <span class="info"><span class="label">uptime: </span>{% if s.uptime %}{{ s.uptime }}{% else %} N/A {% endif %}</span>
+                                                    </br>
                                                 </small>
                                             </li>
                                             {% endfor %}
@@ -98,7 +102,7 @@
                                                 </strong>
 
                                                 <small>
-                                                    <span class="info"><span class="label">response time: </span>{{ s.port.responsetime }}</span>
+                                                    <span class="info"><span class="label">response time: </span>{{ s.port.responsetime }} seconds</span>
                                                 </small>
                                             </li>
                                             {% endfor %}
