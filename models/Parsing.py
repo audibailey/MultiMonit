@@ -19,8 +19,10 @@ def system():
         fs = []
 
         # parse the xml whether its a local xml file or remote
-        gcontext = ssl.SSLContext(ssl.CERT_OPTIONAL)
-        monit = ET.parse(urllib.urlopen(m, context=gcontext)) or ET.parse(m)
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        monit = ET.parse(urllib.urlopen(m, context=ctx)) or ET.parse(m)
         root = monit.getroot()
 
         # find and save daemon xml data

@@ -29,8 +29,10 @@ class logs():
         refresh = config["refresh"]
 
         name = ""
-        gcontext = ssl.SSLContext(ssl.CERT_OPTIONAL)
-        monit = ET.parse(urllib.urlopen(m, context=gcontext)) or ET.parse(m)
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        monit = ET.parse(urllib.urlopen(m, context=ctx)) or ET.parse(m)
         root = monit.getroot()
 
         for i in root.findall("server/localhostname"):
