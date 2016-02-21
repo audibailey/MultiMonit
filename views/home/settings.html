@@ -21,9 +21,10 @@
                             <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
                             <br>
                             <div class="input_fields_wrap">
+                                {% set count = 1 %}
                                 {% for v in urls %}
                                 <div class="input-control modern text" style="width: 100%">
-                                        <input type="text" name="monitxml{{ k }}" value="{{ v }}">
+                                        <input type="text" name="monitxml{{ count }} {% set count = count + 1 %}" value="{{ v }}">
                                         <span class="label">Monit HTTP XML URL:</span>
                                         <span class="informer">Example: http://user:pass@link.com:2812/_status?format=xml</span>
                                         <button class="button remove_field"><span class="mif-cross"></span></button>

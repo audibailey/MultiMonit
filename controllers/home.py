@@ -64,7 +64,7 @@ class HomeController(BaseController):
         # setup update config data
         for k, v in params.items():
             if k != "refresh":
-                url = v
+                url.append(v)
             else:
                 refresh = v
 
