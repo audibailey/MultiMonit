@@ -23,13 +23,19 @@
                     <hr class="bg-grayLighter">
                     <p>It is compulsory to restart MultiMonit after doing the websetup! (For logging and some other features to work)</p>
                     <br>
-                    <section class="flexrow head">
-                        <div class='item'>LOAD</div>
-                        <div class='item'>CPU</div>
-                        <div class='item'>MEMORY</div>
-                        <div class='item'>SWAP</div>
-                        <div class='item'>UPTIME</div>
-                    </section>
+                    <table class="table bordered accordhead">
+                        <thead >
+                            <tr>
+                                <th class="load">LOAD</th>
+                                <th class="cpu">CPU</th>
+                                <th class="memory">MEMORY</th>
+                                <th class="swap">SWAP</th>
+                                <th class="uptime">UPTIME</th>
+                            </tr>
+                        </thead>
+                    </table>
+                    <br>
+                    <br>
                     <br>
                     <br>
                     <div class="accordion" id="accordion">
@@ -42,14 +48,17 @@
                                         <a href="www.{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a>
                                     </strong>
 
-
-                                    <div class="flexrow">
-                                        <div class='item'>{{ i.sys.load.avg05 }}</div>
-                                        <div class='item'>{{ i.sys.cpu.user }}%</div>
-                                        <div class='item'>{{ i.sys.memory.percent }}%</div>
-                                        <div class='item'>{% if i.sys.swap %}{{ i.sys.swap.percent }}%{% else %}N/A{% endif %}</div>
-                                        <div class='item'>{{ i.sys.server.uptime}}</div>
-                                    </div>
+                                    <table class="table bordered accord">
+                                        <tbody>
+                                            <tr>
+                                                <td class="load">{{ i.sys.load.avg05 }}</td>
+                                                <td class="cpu">{{ i.sys.cpu.user }}%</td>
+                                                <td class="memory">{{ i.sys.memory.percent }}%</td>
+                                                <td class="swap">{% if i.sys.swap %}{{ i.sys.swap.percent }}%{% else %}N/A{% endif %}</td>
+                                                <td class="uptime">{{ i.sys.server.uptime}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
 
                                 <div class="content">
@@ -57,9 +66,10 @@
                                         <h3>Filesystems</h3>
                                             {% if i.fs %}
                                                 <table class="table bordered">
-                                                    <thead class="condensed">
+                                                    <thead >
                                                         <tr>
                                                             <th>STATUS</th>
+                                                            <th>MONITOR</th>
                                                             <th>NAME</th>
                                                             <th>USED</th>
                                                             <th>TOTAL</th>
@@ -70,7 +80,8 @@
                                                     <tbody>
                                                         {% for f in i.fs %}
                                                             <tr>
-                                                                <td>{% if f.status == '0' %}<p style="color: green">Available</p>{% else %}<p style="color: red">Not Available</p>{% endif %}{% if f.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
+                                                                <td>{% if f.status == '0' %}<p style="color: green">Available</p>{% else %}<p style="color: red">Not Available</p>{% endif %}</td>
+                                                                <td>{% if f.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
                                                                 <td>{{ f.name }}</td>
                                                                 <td>{{ f.block.usage}}</td>
                                                                 <td>{{ f.block.total }}</td>
@@ -86,9 +97,10 @@
                                     <div>
                                         <h3>Processes</h3>
                                         <table class="table bordered">
-                                            <thead class="condensed">
+                                            <thead >
                                                 <tr>
                                                     <th>STATUS</th>
+                                                    <td>MONITOR</td>
                                                     <th>NAME</th>
                                                     <th>CPU</th>
                                                     <th>MEMORY</th>
@@ -99,7 +111,8 @@
                                             <tbody>
                                                 {% for s in i.process %}
                                                     <tr>
-                                                        <td>{% if s.status == '0' %}<p style="color: green">Running</p>{% else %}<p style="color: red">Not Running</p>{% endif %}{% if s.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
+                                                        <td>{% if s.status == '0' %}<p style="color: green">Running</p>{% else %}<p style="color: red">Not Running</p>{% endif %}</td>
+                                                        <td>{% if s.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
                                                         <td>{{ s.name }}</td>
                                                         <td>{% if s.cpu.percent %}{{ s.cpu.percent }}%{% else %}N/A{% endif %}</td>
                                                         <td>{% if s.mem.percent %}{{ s.mem.percent }}{% else %}N/A{% endif %}</td>
@@ -115,18 +128,20 @@
                                         <h3>Hosts</h3>
                                         {% if i.host %}
                                             <table class="table bordered">
-                                                <thead class="condensed">
+                                                <thead >
                                                     <tr>
                                                         <th>STATUS</th>
+                                                        <th>MONITOR</th>
                                                         <th>NAME</th>
-                                                        <th>Response Time</th>
+                                                        <th>RESPONSE TIME</th>
                                                     </tr>
                                                 </thead>
 
                                                 <tbody>
                                                     {% for s in i.host %}
                                                         <tr>
-                                                            <td>{% if s.status == '0' %}<p style="color: green">Running</p>{% else %}<p style="color: red">Not Running</p>{% endif %}{% if s.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
+                                                            <td>{% if s.status == '0' %}<p style="color: green">Running</p>{% else %}<p style="color: red">Not Running</p>{% endif %}</td>
+                                                            <td>{% if s.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
                                                             <td>{{ s.name }}</td>
                                                             <td>{{ s.port.responsetime }}</td>
                                                         </tr>

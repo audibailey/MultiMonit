@@ -17,46 +17,38 @@
 .clear
   { clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0 }
 
-.flexrow {
-	display: -webkit-flex;
-    display: -moz-flex;
-    display: -ms-flex;
-    display: -o-flex;
-    -webkit-justify-content: space-between;
-    -moz-justify-content: space-between;
-    -ms-justify-content: space-between;
-    -o-justify-content: space-between;
-    margin-bottom: 10px;
-    -webkit-align-items: center;
-    -moz-align-items: center;
-    -ms-align-items: center;
-    -o-align-items: center;
-    -webkit-flex: none;
-    -moz-flex: none;
-    -ms-flex: none;
-    -o-flex: none;
-    float: right;
-    width: 80%;
-}
-.item {
-    -webkit-flex: 1;
-    -moz-flex: 1;
-    -ms-flex: 1;
-    -o-flex: 1;
-    margin: auto 10px;
-    text-align: center;
-}
-
-.head {
-    width: 80%;
-}
-
-.head .item{
-    margin-left: 2%;
-}
-
 td, th{
     padding: 0;
     margin: 0;
     text-align: center;
+}
+
+.accord{
+    width: 60%;
+    float: right;
+}
+
+.accordhead{
+    width: 60%;
+    float: right;
+}
+
+.cpu{
+    width: 300px;
+}
+
+.load{
+    width: 300px;
+}
+
+.memory {
+    width: 300px;
+}
+
+.swap {
+    width:300px;
+}
+
+.uptime{
+    width:300px;
 }

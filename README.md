@@ -1,7 +1,7 @@
 # MultiMonit
 
 A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
-Version: 2.39
+Version: 2.50
 
 # Important
 

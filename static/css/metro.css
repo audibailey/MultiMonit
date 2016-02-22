@@ -4939,10 +4939,10 @@ a.tag {
   width: 100%;
   margin: .625rem 0;
 }
-/*.table th,
-.table td {
+.table th{
   padding: 0.625rem;
-}*/
+  text-align: center;
+}
 .table thead {
   border-bottom: 4px solid #999999;
 }
@@ -4951,7 +4951,6 @@ a.tag {
   cursor: default;
   color: #52677a;
   border-color: transparent;
-  text-align: left;
   font-style: normal;
   font-weight: 700;
   line-height: 100%;
