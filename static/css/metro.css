@@ -4939,10 +4939,10 @@ a.tag {
   width: 100%;
   margin: .625rem 0;
 }
-.table th,
+/*.table th,
 .table td {
   padding: 0.625rem;
-}
+}*/
 .table thead {
   border-bottom: 4px solid #999999;
 }

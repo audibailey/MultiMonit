@@ -23,7 +23,6 @@
                     <hr class="bg-grayLighter">
                     <p>It is compulsory to restart MultiMonit after doing the websetup! (For logging and some other features to work)</p>
                     <br>
-
                     <section class="flexrow head">
                         <div class='item'>LOAD</div>
                         <div class='item'>CPU</div>
@@ -31,13 +30,8 @@
                         <div class='item'>SWAP</div>
                         <div class='item'>UPTIME</div>
                     </section>
-
                     <br>
                     <br>
-                    <br>
-                    <br>
-                    <br>
-
                     <div class="accordion" id="accordion">
                         {% for i in data %}
                             <div class="frame">
@@ -63,7 +57,7 @@
                                         <h3>Filesystems</h3>
                                             {% if i.fs %}
                                                 <table class="table bordered">
-                                                    <thead>
+                                                    <thead class="condensed">
                                                         <tr>
                                                             <th>STATUS</th>
                                                             <th>NAME</th>
@@ -92,7 +86,7 @@
                                     <div>
                                         <h3>Processes</h3>
                                         <table class="table bordered">
-                                            <thead>
+                                            <thead class="condensed">
                                                 <tr>
                                                     <th>STATUS</th>
                                                     <th>NAME</th>
@@ -121,7 +115,7 @@
                                         <h3>Hosts</h3>
                                         {% if i.host %}
                                             <table class="table bordered">
-                                                <thead>
+                                                <thead class="condensed">
                                                     <tr>
                                                         <th>STATUS</th>
                                                         <th>NAME</th>
