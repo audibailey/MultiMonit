@@ -2,7 +2,7 @@
 
 {% block head %}
     <title>Multi-Monit: Dashboard</title>
-    <link rel="stylesheet" href="/static/css/custom.css"/>
+    <link rel="stylesheet" href="/static/css/dash.css"/>
 
     <meta http-equiv="refresh" content="{{ refresh }}">
 
@@ -24,6 +24,20 @@
                     <p>It is compulsory to restart MultiMonit after doing the websetup! (For logging and some other features to work)</p>
                     <br>
 
+                    <section class="flexrow head">
+                        <div class='item'>LOAD</div>
+                        <div class='item'>CPU</div>
+                        <div class='item'>MEMORY</div>
+                        <div class='item'>SWAP</div>
+                        <div class='item'>UPTIME</div>
+                    </section>
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+
                     <div class="accordion" id="accordion">
                         {% for i in data %}
                             <div class="frame">
@@ -33,37 +47,18 @@
                                         <span title="monitored" class="dot monitored {% if i.sys.monitor == '1' %} running {% else %} failure {% endif %}">&middot;</span>
                                         <a href="www.{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a>
                                     </strong>
+
+
+                                    <div class="flexrow">
+                                        <div class='item'>{{ i.sys.load.avg05 }}</div>
+                                        <div class='item'>{{ i.sys.cpu.user }}%</div>
+                                        <div class='item'>{{ i.sys.memory.percent }}%</div>
+                                        <div class='item'>{% if i.sys.swap %}{{ i.sys.swap.percent }}%{% else %}N/A{% endif %}</div>
+                                        <div class='item'>{{ i.sys.server.uptime}}</div>
+                                    </div>
                                 </div>
 
                                 <div class="content">
-                                    <div>
-                                        <h3>System</h3>
-                                            <table class="table bordered">
-                                                <thead>
-                                                    <tr>
-                                                        <th>STATUS</th>
-                                                        <th>LOAD</th>
-                                                        <th>CPU</th>
-                                                        <th>MEMORY</th>
-                                                        <th>SWAP</th>
-                                                        <th>UPTIME</th>
-                                                    </tr>
-                                                </thead>
-
-                                                <tbody>
-                                                    <tr>
-                                                        <td>{% if i.sys.status == '0' %}<p style="color: green">Running</p>{% else %}<p style="color: red">Not Running</p>{% endif %}</td>
-                                                        <td>{{ i.sys.load.avg05 }}</td>
-                                                        <td>{{ i.sys.cpu.user }}%</td>
-                                                        <td>{{ i.sys.memory.percent }}%</td>
-                                                        <td>{% if i.sys.swap %}{{ i.sys.swap.percent }}%{% else %}N/A{% endif %}</td>
-                                                        <td>{{ i.sys.server.uptime}}</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        <div class="clear"></div>
-                                    </div>
-
                                     <div>
                                         <h3>Filesystems</h3>
                                             {% if i.fs %}

@@ -4969,9 +4969,9 @@ a.tag {
   font-weight: 700;
   line-height: 100%;
 }
-.table tbody td {
+/*.table tbody td {
   padding: 0.625rem 0.85rem;
-}
+}*/
 .table .sortable-column {
   position: relative;
   cursor: pointer;
