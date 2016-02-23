@@ -1,20 +1,28 @@
 # MultiMonit
 
-A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
-Version: 2.50
+![alt text](https://wp-bullet.com/wp-content/uploads/2016/02/wp-bullet-svg.svg "Sponsored By: WP-Bullet")(http://wp-bullet.com/)
 
-# Important
+## Introduction
+A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
+
+Version: 2.58
+
+## Screenshots
+
+None right now
+
+## Important
 
 * Default username and password is: admin/password You can change it in the run.py config section.
 * There is one error which makes it impossible to kill MultiMonit using Ctrl + C. Please use Ctrl + \ to kill MultiMonit, kill -9 {PID} still works as usual.
 * If there is in error or you cant figure something out, use the GitHub Issues tab please.
 
-# To Do
+## To Do
 
 * Fix the Ctrl+C error (For now use Kill or Ctrl + \ )
 * Add new proposed features
 
-# Requirements:
+## Requirements:
 
 * Python 2.7+
 * Jinja2 >= 2.8
@@ -22,7 +30,7 @@ Version: 2.50
 * MarkupSafe >= 0.23
 * PyYAML >= 3.11
 
-#Instructions for Debian/Ubuntu:
+## Instructions for Debian/Ubuntu:
 
 1. sudo apt-get update
 2. sudo apt-get install build-essential python2.7 python-dev git python-pip libyaml-dev
@@ -32,7 +40,7 @@ Version: 2.50
 6. sudo python2.7 /opt/MultiMonit/run.py
 7. Goto ip-address:3005 for the setup to begin.
 
-#Credits
+## Credits
 
 * Mike (http://htpcguides.com)
 * Karmi (https://github.com/karmi/monittr)

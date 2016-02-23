@@ -1,6 +1,6 @@
 import xml.etree.cElementTree as ET
 from models import Config
-import urllib, ssl
+import urllib, ssl, urlparse, datetime
 
 def loop(data):
     for key, value in data.iteritems():
@@ -9,14 +9,7 @@ def loop(data):
             data[key] = duration(value)
 
 def duration(seconds):
-	t= []
-	for dm in (60, 60, 24, 7):
-		seconds, m = divmod(int(seconds), dm)
-		t.append(m)
-	t.append(seconds)
-	return ', '.join('%d %s' % (num, unit)
-			 for num, unit in zip(t[::-1], 'w d h m s'.split())
-			 if num)
+    return str(datetime.timedelta(seconds=float(seconds)))
 
 def system():
 
@@ -76,7 +69,9 @@ def system():
         sys.update({"load": {h.tag: h.text for i in root.findall("*[@type='5']/system/load") for h in i}, "cpu": {h.tag: h.text for i in root.findall("*[@type='5']/system/cpu") for h in i}, "memory":{h.tag: h.text for i in root.findall("*[@type='5']/system/memory") for h in i}, "swap":{h.tag: h.text for i in root.findall("*[@type='5']/system/swap") for h in i}, "server": {h.tag: h.text for i in root.findall("server") for h in i}, 'platform': {h.tag: h.text for i in root.findall('platform') for h in i}})
         loop(sys["server"])
         data.update({"sys": sys})
-        data.update({"url": '.'.join(str(m).replace('http://','').split('/')[0].split('.')[-2:])})
+        netloc = urlparse.urlparse(m).netloc
+        scheme = urlparse.urlparse(m).scheme
+        data.update({"url": scheme + ":\\\\www." + netloc })
         loop(data)
 
         parsed.append(data)

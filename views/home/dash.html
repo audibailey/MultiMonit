@@ -42,10 +42,10 @@
                         {% for i in data %}
                             <div class="frame">
                                 <div class="heading">
-                                    <strong>
+                                    <strong style="text-align: center; font-weight: bold; font-size: large">
                                         <span title="status" class="dot status {% if i.sys.status == '0' %} running {% else %} failure {% endif %}">&middot;</span>
                                         <span title="monitored" class="dot monitored {% if i.sys.monitor == '1' %} running {% else %} failure {% endif %}">&middot;</span>
-                                        <a href="www.{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a>
+                                        <a href="{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a>
                                     </strong>
 
                                     <table class="table bordered accord">
@@ -114,8 +114,8 @@
                                                         <td>{% if s.status == '0' %}<p style="color: green">Running</p>{% else %}<p style="color: red">Not Running</p>{% endif %}</td>
                                                         <td>{% if s.monitor == '1' %}<p style="color: green">Monitored</p>{% else %}<p style="color: red">Not Monitored</p>{% endif %}</td>
                                                         <td>{{ s.name }}</td>
-                                                        <td>{% if s.cpu.percent %}{{ s.cpu.percent }}%{% else %}N/A{% endif %}</td>
-                                                        <td>{% if s.mem.percent %}{{ s.mem.percent }}{% else %}N/A{% endif %}</td>
+                                                        <td>{% if s.cpu.percent %}{{ s.cpu.percenttotal }}%{% else %}N/A{% endif %}</td>
+                                                        <td>{% if s.mem.percent %}{{ s.mem.percenttotal }}%{% else %}N/A{% endif %}</td>
                                                         <td>{% if s.uptime %}{{ s.uptime }}{% else %}N/A{% endif %}</td>
                                                     </tr>
                                                 {% endfor %}
@@ -157,8 +157,8 @@
                     </div>
 
                     <div>
-                        <p style="float: left">Page Resets Every {{ refresh }} Seconds </p>
-                        <a href="settings" style="float: right"><span class="mif-wrench"></span> Settings</a>
+                        <p style="float: left; display: inline-block">Page Resets Every {{ refresh }} Seconds </p>
+                        <a href="settings" style="display: inline-block; margin-top: 1%; float: right;"><span class="mif-wrench"></span> Settings</a>
                     </div>
                 </div>
             </div>
