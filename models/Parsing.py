@@ -35,14 +35,14 @@ def duration(seconds):
 
         date = '{}W {}D {}H {}M'.format(weeks, days, hours, minutes)
 
-    elif time == "Year Week Hour Minute":
+    elif time == "Year Day Hour Minute":
         minutes, seconds = divmod(int(seconds), 60)
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
         weeks, days = divmod(days, 7)
         years, weeks = divmod(days, 52)
 
-        date = '{}Y {}W {}H {}M'.format(years, weeks, hours, minutes)
+        date = '{}Y {}D {}H {}M'.format(years, days, hours, minutes)
     return str(date)
 
 def system():

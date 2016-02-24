@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block body %}
+    <center><a href="http://wp-bullet.com"><img src="https://wp-bullet.com/wp-content/uploads/2016/02/wp-bullet-svg.svg" alt="WP-Bullet" width="30%" height="10%"></a></center>
     <div class="page-content">
         <div class="flex-grid no-responsive-future" style="height: 100%;">
             <div class="row" style="height: 100%">
@@ -42,7 +43,7 @@
                         {% for i in data %}
                             <div class="frame">
                                 <div class="heading">
-                                    <div style="text-align: center; font-weight: bold; font-size: large; display: inline-block; margin-top: 7px;">
+                                    <div style="text-align: center; font-weight: bold; font-size: large; display: inline-block; margin-top: 7px;" >
                                         <span title="status" class="dot status {% if i.sys.status == '0' %} running {% else %} failure {% endif %}">&middot;</span>
                                         <span title="monitored" class="dot monitored {% if i.sys.monitor == '1' %} running {% else %} failure {% endif %}">&middot;</span>
                                         <strong><a href="{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a></strong>
