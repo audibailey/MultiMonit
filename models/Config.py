@@ -2,9 +2,11 @@ import yaml
 
 fname = "config.yml"
 
+
 def mkconfig(urls):
     with open(fname, "w") as f:
-        yaml.dump({"URLS": urls, "refresh": 20}, f)
+        yaml.dump({"URLS": urls, "refresh": 20, "time": "Week Day Hour Minute Second"}, f)
+
 
 def readconfig():
     try:
@@ -15,6 +17,7 @@ def readconfig():
     except:
         return 0
 
-def updateconfig(urls, refresh):
+
+def updateconfig(urls, refresh, time):
     with open(fname, "w") as f:
-        yaml.dump({"URLS": urls, "refresh": refresh}, f)
+        yaml.dump({"URLS": urls, "refresh": refresh, "time": time}, f)

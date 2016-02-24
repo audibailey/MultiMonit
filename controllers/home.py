@@ -53,9 +53,10 @@ class HomeController(BaseController):
         config = Config.readconfig()
         URLS = config["URLS"]
         refresh = config["refresh"]
+        times = config["time"]
 
         # Return the template
-        return self.render_template('home/settings.html', template_vars={'refresh': refresh, 'urls': URLS})
+        return self.render_template('home/settings.html', template_vars={'refresh': refresh, 'urls': URLS, 'time': times})
 
     # CherryPy load the Confimed Settings Page
     @cherrypy.expose
@@ -63,13 +64,15 @@ class HomeController(BaseController):
         url = []
         # setup update config data
         for k, v in params.items():
-            if k != "refresh":
+            if k != "refresh" and k != "time":
                 url.append(v)
-            else:
+            elif k == "refresh":
                 refresh = v
+            elif k == "time":
+                time = v
 
         # update config
-        Config.updateconfig(url, refresh)
+        Config.updateconfig(url, refresh, time)
 
         # redirect to dashboard
         raise cherrypy.HTTPRedirect("dash")

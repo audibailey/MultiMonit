@@ -42,13 +42,13 @@
                         {% for i in data %}
                             <div class="frame">
                                 <div class="heading">
-                                    <strong style="text-align: center; font-weight: bold; font-size: large">
+                                    <div style="text-align: center; font-weight: bold; font-size: large; display: inline-block; margin-top: 7px;">
                                         <span title="status" class="dot status {% if i.sys.status == '0' %} running {% else %} failure {% endif %}">&middot;</span>
                                         <span title="monitored" class="dot monitored {% if i.sys.monitor == '1' %} running {% else %} failure {% endif %}">&middot;</span>
-                                        <a href="{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a>
-                                    </strong>
+                                        <strong><a href="{{ i.url }}"><span class="text-light" style="color: black">{% if i.sys == 0 %}Failed to check Monit Host{% else %}{{i.sys.name }}{% endif %}</span></a></strong>
+                                    </div>
 
-                                    <table class="table bordered accord">
+                                    <table class="table bordered accord" style="display: inline-block;">
                                         <tbody>
                                             <tr>
                                                 <td class="load">{{ i.sys.load.avg05 }}</td>

@@ -9,7 +9,41 @@ def loop(data):
             data[key] = duration(value)
 
 def duration(seconds):
-    return str(datetime.timedelta(seconds=float(seconds)))
+    config = Config.readconfig()
+    time = config["time"]
+
+    if time == "Week Day Hour Minute Second":
+        minutes, seconds = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+        weeks, days = divmod(days, 7)
+
+        date = '{}W {}D {}H {}M {}S'.format(weeks, days, hours, minutes, seconds)
+
+    elif time == "Day Hour Minute Second":
+        minutes, seconds = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+
+        date = '{}D {}H {}M {}S'.format(days, hours, minutes, seconds)
+
+    elif time == "Week Day Hour Minute":
+        minutes, seconds = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+        weeks, days = divmod(days, 7)
+
+        date = '{}W {}D {}H {}M'.format(weeks, days, hours, minutes)
+
+    elif time == "Year Week Hour Minute":
+        minutes, seconds = divmod(int(seconds), 60)
+        hours, minutes = divmod(minutes, 60)
+        days, hours = divmod(hours, 24)
+        weeks, days = divmod(days, 7)
+        years, weeks = divmod(days, 52)
+
+        date = '{}Y {}W {}H {}M'.format(years, weeks, hours, minutes)
+    return str(date)
 
 def system():
 

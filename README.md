@@ -1,12 +1,12 @@
 # MultiMonit
-
+## Sponsored by WP-BULLET
 ![alt text](https://wp-bullet.com/wp-content/uploads/2016/02/wp-bullet-svg.svg "Sponsored By: WP-Bullet")
 [WP-BULLET](http://wp-bullet.com/)
 
 ## Introduction
 A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
 
-Version: 2.58
+Version: 2.72
 
 ## Screenshots
 
@@ -30,6 +30,11 @@ None right now
 * CherryPy >= 4.0.0
 * MarkupSafe >= 0.23
 * PyYAML >= 3.11
+* Git
+* LibYaml-Dev
+* Python-dev
+* Build Essential
+* Pip
 
 ## Instructions for Debian/Ubuntu:
 
@@ -47,3 +52,5 @@ None right now
 * Karmi (https://github.com/karmi/monittr)
 * Jason (https://simpletutorials.com/c/2543/MVC+with+CherryPy+and+Jinja2+%28updated%29)
 * MetroUI (http://metroui.org.ua/)
+
+COPYRIGHT 2016 DESGYZ, AUDI BAILEY, MIKE

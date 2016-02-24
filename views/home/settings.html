@@ -34,6 +34,20 @@
                             <button type="button" class="button link add_field_button">Add More URL's</button>
                             <br>
                             <br>
+
+                            <h4 class="text-light">Date Display</h4>
+                            <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
+                            <br>
+
+                            <div class="input-control select" style="width:20%">
+                                <select name="time">
+                                    {% if time == 'Week Day Hour Minute Second' %}<option selected> Week Day Hour Minute Second</option>{% else %}<option> Week Day Hour Minute Second</option>{% endif %}
+                                    {% if time == 'Day Hour Minute Second' %}<option selected> Day Hour Minute Second</option>{% else %}<option>Day Hour Minute Second</option>{% endif %}
+                                    {% if time == 'Week Day Hour Minute' %}<option selected>Week Day Hour Minute</option>{% else %}<option>Week Day Hour Minute</option>{% endif %}
+                                    {% if time == 'Year Week Hour Minute' %}<option selected>Year Week Hour Minute</option>{% else %}<option>Year Week Hour Minute</option>{% endif %}
+                                </select>
+                            </div>
+
                             <h4 class="text-light">Refresh Rate</h4>
                             <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
                             <br>
