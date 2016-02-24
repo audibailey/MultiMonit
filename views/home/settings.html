@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block body %}
-    <center><a href="http://wp-bullet.com"><img src="https://wp-bullet.com/wp-content/uploads/2016/02/wp-bullet-svg.svg" alt="WP-Bullet" width="30%" height="10%"></a></center>
     <div class="page-content">
         <div class="flex-grid no-responsive-future" style="height: 100%;">
             <div class="row" style="height: 100%">
@@ -15,10 +14,10 @@
                 <div class="cell auto-size padding20 bg-white" id="cell-content">
                     <h1 class="text-light">Settings<span class="mif-wrench place-right"></span></h1>
                     <hr class="thin bg-grayLighter">
-
+                    <h4>Sponsored by <a href="http://wp-bullet.com">WP Bullet</a></h4>
                     <div class="cell flex-just-center" style="border:thin black">
                         <form method="GET" action="confirmed">
-                            <h4 class="text-light">Monit HTTP XML URL</h4>
+                            <h3 class="text-light">Monit HTTP XML URL</h3>
                             <hr class="thin bg-grayLighter" style="width: 70%; float: left;">
                             <br>
                             <div class="input_fields_wrap">
@@ -41,7 +40,7 @@
                             <br>
 
                             <div class="input-control select" style="width:20%">
-                                <select name="time">
+                                <select title="Date" name="time">
                                     {% if time == 'Week Day Hour Minute Second' %}<option selected> Week Day Hour Minute Second</option>{% else %}<option> Week Day Hour Minute Second</option>{% endif %}
                                     {% if time == 'Day Hour Minute Second' %}<option selected> Day Hour Minute Second</option>{% else %}<option>Day Hour Minute Second</option>{% endif %}
                                     {% if time == 'Week Day Hour Minute' %}<option selected>Week Day Hour Minute</option>{% else %}<option>Week Day Hour Minute</option>{% endif %}

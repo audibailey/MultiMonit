@@ -6,7 +6,7 @@
 ## Introduction
 A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
 
-Version: 2.72
+Version: 2.76
 
 ## Screenshots
 
@@ -43,7 +43,7 @@ None right now
 3. sudo pip install jinja2 cherrypy markupsafe PyYAML
 4. sudo git clone git://github.com/desgyz/MultiMonit.git /opt/MultiMonit
 5. sudo chown -R user:group /opt/MultiMonit
-6. sudo python2.7 /opt/MultiMonit/run.py
+6. sudo python2.7 /opt/MultiMonit/multimonit.py
 7. Goto ip-address:3005 for the setup to begin.
 
 ## Credits
