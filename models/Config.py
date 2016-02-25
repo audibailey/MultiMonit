@@ -5,7 +5,7 @@ fname = "config.yml"
 
 def mkconfig(urls):
     with open(fname, "w") as f:
-        yaml.dump({"URLS": urls, "refresh": 20, "time": "Week Day Hour Minute Second"}, f)
+        yaml.dump({"URLS": urls, "refresh": 20, "time": "Year Day Hour Minute"}, f)
 
 
 def readconfig():

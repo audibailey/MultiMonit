@@ -17,15 +17,26 @@ def duration(seconds):
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
         weeks, days = divmod(days, 7)
-
-        date = '{}W {}D {}H {}M {}S'.format(weeks, days, hours, minutes, seconds)
+        if weeks == 0:
+            date = '{}D {}H {}M {}S'.format(days, hours, minutes, seconds)
+        elif days == 0:
+            date = '{}H {}M {}S'.format(hours, minutes, seconds)
+        elif hours == 0:
+            date = '{}M {}S'.format(minutes, seconds)
+        else:
+            date = '{}W {}D {}H {}M {}S'.format(weeks, days, hours, minutes, seconds)
 
     elif time == "Day Hour Minute Second":
         minutes, seconds = divmod(int(seconds), 60)
         hours, minutes = divmod(minutes, 60)
         days, hours = divmod(hours, 24)
 
-        date = '{}D {}H {}M {}S'.format(days, hours, minutes, seconds)
+        if days == 0:
+            date = '{}H {}M {}S'.format(hours, minutes, seconds)
+        if hours == 0:
+            date = '{}M {}S'.format(minutes, seconds)
+        else:
+            date = '{}D {}H {}M {}S'.format(days, hours, minutes, seconds)
 
     elif time == "Week Day Hour Minute":
         minutes, seconds = divmod(int(seconds), 60)
@@ -33,7 +44,14 @@ def duration(seconds):
         days, hours = divmod(hours, 24)
         weeks, days = divmod(days, 7)
 
-        date = '{}W {}D {}H {}M'.format(weeks, days, hours, minutes)
+        if weeks == 0:
+            date = '{}D {}H {}M'.format(days, hours, minutes)
+        elif days == 0:
+            date = '{}H {}M'.format(hours, minutes)
+        elif hours == 0:
+            date = '{}M'.format(minutes)
+        else:
+            date = '{}W {}D {}H {}M'.format(weeks, days, hours, minutes)
 
     elif time == "Year Day Hour Minute":
         minutes, seconds = divmod(int(seconds), 60)
@@ -42,7 +60,15 @@ def duration(seconds):
         weeks, days = divmod(days, 7)
         years, weeks = divmod(days, 52)
 
-        date = '{}Y {}D {}H {}M'.format(years, days, hours, minutes)
+        if years == 0:
+            date = '{}D {}H {}M'.format(days, hours, minutes)
+        elif days == 0:
+            date = '{}H {}M'.format(hours, minutes)
+        elif hours == 0:
+            date = '{}M'.format(minutes)
+        else:
+            date = '{}Y {}D {}H {}M'.format(years, days, hours, minutes)
+
     return str(date)
 
 def system():
