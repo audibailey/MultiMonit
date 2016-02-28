@@ -2,10 +2,9 @@ import cherrypy
 import os
 from controllers.home import *
 from site_config import SiteConfig
-from controllers.auth import require, member_of, name_is
 from models.loghelper import Logger
 from models.logger import logs
-from models.dbtool import DbTool
+
 
 
 # this method returns HTML when a 404 (page not found error) is encountered.
@@ -63,10 +62,6 @@ def start_server():
     userpassdict = {'admin' : 'password'}
     checkpassword = cherrypy.lib.auth_basic.checkpassword_dict(userpassdict)
 
-    # this is where I initialize a custom tool for connecting to the database, once for each
-    # request. Edit models/dbtool.py and uncomment the tools.db lines below to use this.
-    # cherrypy.tools.db = DbTool()
-
     ##################################################################
     #                                                                #
     #                       CONFIG SECTION                           #
@@ -87,14 +82,6 @@ def start_server():
         'tools.sessions.storage_type': "file",
         'tools.sessions.storage_path': session_dir,
         'tools.sessions.timeout': 180,
-
-        # this is a custom tool for handling authorization (see auth.py)
-        'tools.auth.on': False,
-        'tools.auth.priority': 52,
-        'tools.sessions.locking': 'early',
-
-        # uncomment the below line to use the tool written to connect to the database
-        # 'tools.db.on': True
 
         # basic auth settings
         'tools.auth_basic.on': True,
@@ -124,9 +111,6 @@ def start_server():
         '/static': {
             'tools.staticdir.on': True,
             'tools.staticdir.dir': 'static',
-
-            # we don't need to initialize the database for static files served by CherryPy
-            # 'tools.db.on': False
         }
     })
 

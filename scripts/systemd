@@ -1,0 +1,13 @@
+[Unit]
+Description=MultiMonit
+After=network.target
+[Service]
+User=$MULTIMONIT
+Group=$MULTIMONIT
+Type=forking
+ExecStart=/usr/bin/python /opt/multimonit/multimonit.py
+ExecStop=kill -9 /var/run/MultiMonit.pid
+KillMode=process
+Restart=on-failure
+[Install]
+WantedBy=multi-user.target
