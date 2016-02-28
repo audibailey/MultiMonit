@@ -8,6 +8,8 @@ A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.
 
 Version: 2.76
 
+Install: https://github.com/desgyz/MultiMonit/wiki/Install-on-Debian-Ubuntu
+
 ## Screenshots
 
 None right now
@@ -29,5 +31,3 @@ None right now
 * Karmi (https://github.com/karmi/monittr)
 * Jason (https://simpletutorials.com/c/2543/MVC+with+CherryPy+and+Jinja2+%28updated%29)
 * MetroUI (http://metroui.org.ua/)
-
-COPYRIGHT 2016 DESGYZ, AUDI BAILEY, MIKE
