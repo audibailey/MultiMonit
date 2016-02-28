@@ -1,6 +1,5 @@
 # MultiMonit
 ## Sponsored by WP-BULLET
-![alt text](https://wp-bullet.com/wp-content/uploads/2016/02/wp-bullet-svg.svg "Sponsored By: WP-Bullet")
 [WP-BULLET](http://wp-bullet.com/)
 
 ## Introduction
