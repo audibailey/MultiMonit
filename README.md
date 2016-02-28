@@ -1,5 +1,5 @@
 # MultiMonit
-## Sponsored by [WP-BULLET](http://wp-bullet.com/)
+## Sponsored by [WP BULLET](http://wp-bullet.com/)
 
 ## Introduction
 A M/Monit Alternative coded in Python. Heavily based on Monittr (https://github.com/karmi/monittr)
